@@ -2,6 +2,11 @@
 require "openai"
 require "dotenv/load"
 
+# instantiate a client
+client = OpenAI::Client.new(access_token: ENV.fetch("OPENAI_API_KEY"))
+
+# conversation loop
+
 puts "How can I help you today? (Enter \"bye\" to end the conversation)"
 
 # print separator line
@@ -9,8 +14,6 @@ puts "How can I help you today? (Enter \"bye\" to end the conversation)"
   print "–"
 end
 print "\n"
-
-client = OpenAI::Client.new(access_token: ENV.fetch("OPENAI_API_KEY"))
 
 user_query = gets.chomp
 
