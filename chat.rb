@@ -30,8 +30,10 @@ api_response = client.chat(
   }
 )
 
+=begin
 pp api_response
 pp "<------------- Line Break ---------------->"
+=end 
 
-gpt_response = api_response.fetch("choices").fetch("message").fetch("content")
+gpt_response = api_response.fetch("choices").[](0).fetch("message").fetch("content")
 pp gpt_response
