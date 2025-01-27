@@ -21,6 +21,7 @@ while not end_conversation # don't forget to add `end`
   print "\n"
 
   user_query = gets.chomp
+  puts "\n"
   
   # leave loop if user says "bye"
   if user_query == "bye"
@@ -39,6 +40,7 @@ while not end_conversation # don't forget to add `end`
     )
 
     gpt_response = api_response.fetch("choices").[](0).fetch("message").fetch("content")
-    pp gpt_response
+    message_list.push({:role => "assistant", :content => gpt_response})
+    puts gpt_response
   end
 end
