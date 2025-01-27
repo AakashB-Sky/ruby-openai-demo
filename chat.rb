@@ -5,6 +5,9 @@ require "dotenv/load"
 # instantiate a client
 client = OpenAI::Client.new(access_token: ENV.fetch("OPENAI_API_KEY"))
 
+# create array of messages
+message_list = Array.new
+
 puts "How can I help you today? (Enter \"bye\" to end the conversation)"
 
 # conversation loop
@@ -25,12 +28,7 @@ while not end_conversation # don't forget to add `end`
   end_conversation = true
   else
     # prepare an array of messages
-    message_list = [
-      {
-        "role" => "user",
-        "content" => user_query
-      }
-    ]
+    message_list.push({:role => "user", :content => user_query})
 
     # Call the API to get the next message from GPT
     api_response = client.chat(
